@@ -41,7 +41,7 @@ In this step, I will launch an EC2 instance in each VPC because we need to deplo
 
 ### Step 3 - Set up Logs
 
-In this step, I will configure the security group rules and settings to allow ICMP traffic and network connectivity because we need to enable ping tests between our instances across the peered VPCs.
+In this step, I will create a CloudWatch log group and set up VPC Flow Logs for my VPC because we need a place to store and monitor the network traffic data that flows in and out of our subnets.
 
 ### Step 4 - Set IAM permissions for Logs
 
@@ -97,7 +97,7 @@ My first ping test between my EC2 instances had no replies, which means the EC2 
 
 ![Image](https://nextwork.ai/overjoyed_magenta_proud_yak/uploads/6954a600-a89e-56b0-886b-7054da118a3b_99d4ba42)
 
-I could receive ping replies if I ran the ping test using the other instance's public IP address, which means Instance 2 is correctly configured to respond to ICMP traffic and is reachable, but the traffic was successfully routing across the public internet rather than our private internal network because the direct VPC peering connection and private routing rules were not yet established.
+I could receive ping replies if I ran the ping test using the other instance's public IP address, which means Instance 2 is correctly configured to respond to ICMP traffic and is reachable. However, the traffic was routed across the public internet rather than our private internal network, because the VPC peering connection and private routing rules were not yet set up.
 
 ## Connectivity troubleshooting
 
@@ -127,7 +127,6 @@ For example, the flow log I've captured (2 844347864508 eni-049be7c49b59686f5 21
 
 Logs Insights is an integrated query and analysis feature in Amazon CloudWatch that allows you to interactively search, filter, and analyze log data using a dedicated query language to quickly troubleshoot operational issues and spot traffic patterns.
 
-To complete Step 7 on your NextWork - VPC Monitoring with Flow Logs project page, copy and paste the following response into the text box:
 
 I ran the query stats sum(bytes) as TotalBytes by srcAddr, dstAddr | sort TotalBytes desc | limit 10. This query analyzes the flow logs by grouping the recorded traffic by source and destination IP addresses, summing up the transferred bytes for each pair, sorting them in descending order to find the heaviest data exchanges, and limiting the output to the top 10 results. (Note: Because I am using the updated Amazon CloudWatch Log Analytics experience, the interface layout differs slightly from older tutorial guides, but the Logs Insights query logic and results remain the same.)
 
