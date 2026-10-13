@@ -1,5 +1,7 @@
 # VPC Monitoring with Flow Logs — Cheat Sheet
 
+> 📚 **Part 7 of 9** in my [AWS VPC Series](https://github.com/jasahorro/AWS-VPC-Series) · ← Previous: [VPC Peering](https://github.com/jasahorro/VPC-Peering/blob/main/CHEATSHEET.md) · Next: [Access S3 from a VPC](https://github.com/jasahorro/Access-S3-from-a-VPC/blob/main/CHEATSHEET.md) →
+
 Lesson notes for reviewing later. The project write-up is in [README.md](README.md).
 
 ## Contents
